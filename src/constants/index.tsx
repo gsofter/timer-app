@@ -12,3 +12,5 @@ export const STUDENTS: Array<{ id: string; name: string }> = [
     name: 'Linda',
   },
 ];
+
+export const COLORS = ['#3174ad', '#7FFF00', '#6495ED'];

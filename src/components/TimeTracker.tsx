@@ -38,6 +38,8 @@ export const TimeTracker: React.FC<ITimeTracker> = (props: ITimeTracker) => {
     };
     saveTime(request);
     setTracking(false);
+    setStudentId('');
+    setTaskName('');
   };
 
   const handleDiscard = () => {

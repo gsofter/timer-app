@@ -1,6 +1,6 @@
 import { Row, Col, Typography, Card, Button, Tag } from 'antd';
 import moment, { Moment } from 'moment';
-import { STUDENTS } from '../constants';
+import { STUDENTS, COLORS } from '../constants';
 import { DeleteFilled } from '@ant-design/icons';
 const { Title } = Typography;
 
@@ -27,12 +27,16 @@ export const TimeEntries: React.FC<ITimeEntriesProps> = ({ entries, removeTime }
     if (st) return st.name;
     return '';
   };
+
+  const studentNo = (id: string) => {
+    return STUDENTS.findIndex((st) => st.id === id);
+  };
   return (
     <>
       <Title level={3}> Entries </Title>
       <Row>
         <Col span={24}>
-          {entries.map((entry: any) => {
+          {entries.map((entry: any, id) => {
             return (
               <Card
                 key={entry.id}
@@ -46,7 +50,7 @@ export const TimeEntries: React.FC<ITimeEntriesProps> = ({ entries, removeTime }
                 <Row style={{ width: '100%' }}>
                   <Col md={3}>{entry.taskName} </Col>
                   <Col md={3}>
-                    <Tag color="blue">{getStudentName(entry.studentId)} </Tag>
+                    <Tag color={COLORS[studentNo(entry.studentId)]}>{getStudentName(entry.studentId)} </Tag>
                   </Col>
                   <Col md={6}> {formatTime(entry.startTime)}</Col>
                   <Col md={6}>{formatTime(entry.endTime)} </Col>
