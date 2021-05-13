@@ -16,7 +16,6 @@ export const TimeTracker: React.FC<ITimeTracker> = (props: ITimeTracker) => {
   const { reset, stop, start } = props.timer;
   const { saveTime } = props;
   const [startTime, setStartTime] = useState<Moment>(moment());
-  const [endTime, setEndTime] = useState<Moment>(moment());
   const [tracking, setTracking] = useState<Boolean>(false);
   const [studentId, setStudentId] = useState<string | undefined>('');
   const [taskName, setTaskName] = useState<string | undefined>('');
@@ -31,12 +30,11 @@ export const TimeTracker: React.FC<ITimeTracker> = (props: ITimeTracker) => {
   const handleStop = () => {
     stop();
     reset();
-    setEndTime(moment());
     const request = {
       studentId,
       taskName,
       startTime,
-      endTime,
+      endTime: moment(),
     };
     saveTime(request);
     setTracking(false);
