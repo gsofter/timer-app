@@ -1,6 +1,8 @@
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+
 [![Netlify Status](https://api.netlify.com/api/v1/badges/79469ce1-d3b7-4e58-beb6-8e789597a1f5/deploy-status)](https://app.netlify.com/sites/himama-timer/deploys)
 
 ### screenshot
