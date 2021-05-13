@@ -20,7 +20,21 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 - View all time entries
 - Remove existing time entry
 
-### Database
+### What will be implemented in the future
+
+For a day
+- Unit Testing Implementation
+- Add Create/Edit feature of Users
+- Authentication for the user ( Sign In / Sign Up)
+
+For a month
+- Implment Manul time tracking mode.
+- Save playing record so that user can see playing time tracker even he is on the other device or close the browser.
+- Add project selection and edit
+- Add calendar view so that user can see their time entries intuitively (using react-big-calendar)
+- Add dashboard page to show the total tracked hours with charts.
+- Notification & Alert System to let users to know their tracking time per hour, day, week, month
+- Email Subscription feature to send emails to users when they start time tracker.
 
 
 ## Available Scripts
