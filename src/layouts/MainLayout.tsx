@@ -30,6 +30,7 @@ const styles: { [key: string]: (obj: any) => CSS.Properties } = {
       height: '100%',
       padding: '24px',
       background: '#fff',
+      overflow: 'scroll',
     },
   }),
 };

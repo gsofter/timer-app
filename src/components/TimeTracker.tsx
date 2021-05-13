@@ -5,46 +5,53 @@ import { Input, Button, Typography, Row, Col, Dropdown, Select } from 'antd';
 import CSS from 'csstype';
 import Timer from 'react-compound-timer';
 import moment, { Moment } from 'moment';
+import { STUDENTS } from '../constants';
 const { Title } = Typography;
 export interface ITimeTracker {
-  timer: any;
+  timer?: any;
+  saveTime: Function;
 }
 
-const STUDENTS: Array<{ id: string; name: string }> = [
-  {
-    id: '1',
-    name: 'Lucy',
-  },
-  {
-    id: '2',
-    name: 'Jackal',
-  },
-  {
-    id: '3',
-    name: 'Linda',
-  },
-];
 export const TimeTracker: React.FC<ITimeTracker> = (props: ITimeTracker) => {
   const { setTime, reset, stop, start } = props.timer;
+  const { saveTime } = props;
   const [startTime, setStartTime] = useState<Moment>(moment());
   const [endTime, setEndTime] = useState<Moment>(moment());
   const [tracking, setTracking] = useState<Boolean>(false);
+  const [studentId, setStudentId] = useState<string | undefined>('');
+  const [taskName, setTaskName] = useState<string | undefined>('');
   const { css } = useFela(props);
 
   const handleStart = () => {
     start();
+    setStartTime(moment());
     setTracking(true);
   };
 
   const handleStop = () => {
     stop();
+    reset();
+    setEndTime(moment());
+    const request = {
+      studentId,
+      taskName,
+      startTime,
+      endTime,
+    };
+    saveTime(request);
+    setTracking(false);
+  };
+
+  const handleDiscard = () => {
+    stop();
+    reset();
     setTracking(false);
   };
 
   const discardConfirmOverlay = (
     <div>
       Are you sure to Discard?
-      <Button type="primary" onClick={handleStop}>
+      <Button type="primary" onClick={handleDiscard}>
         Discard
       </Button>
     </div>
@@ -52,14 +59,24 @@ export const TimeTracker: React.FC<ITimeTracker> = (props: ITimeTracker) => {
   return (
     <Row className={css(styles.timeTracker)}>
       <Col sm={12} className="flex-row flex-between">
-        <Select style={{ width: '50%', marginRight: '10px' }}>
+        <Select
+          style={{ width: '50%', marginRight: '10px' }}
+          value={studentId}
+          onChange={(value) => setStudentId(value)}
+        >
           {STUDENTS.map((st, index) => (
             <Select.Option value={st.id} key={st.id}>
               {st.name}
             </Select.Option>
           ))}
         </Select>
-        <Input placeholder="What are you working on?" size="large" style={{ width: '50%' }} />
+        <Input
+          placeholder="What are you working on?"
+          size="large"
+          style={{ width: '50%' }}
+          value={taskName}
+          onChange={(event) => setTaskName(event.target.value)}
+        />
       </Col>
       <Col sm={12} className={css(styles.flexEnd)}>
         <Title level={4} style={{ marginBottom: '0px', flex: '1', textAlign: 'center' }}>
@@ -88,7 +105,7 @@ export const TimeTracker: React.FC<ITimeTracker> = (props: ITimeTracker) => {
   );
 };
 
-const withTimer = (timerProps: any) => (WrappedComponent: any) => (wrappedComponentProps: any) =>
+const withTimer = (timerProps: any) => (WrappedComponent: any) => (wrappedComponentProps: ITimeTracker) =>
   (
     <Timer {...timerProps}>
       {(timerRenderProps: any) => <WrappedComponent {...wrappedComponentProps} timer={timerRenderProps} />}
