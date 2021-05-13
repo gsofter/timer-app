@@ -1,6 +1,25 @@
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+[![Netlify Status](https://api.netlify.com/api/v1/badges/79469ce1-d3b7-4e58-beb6-8e789597a1f5/deploy-status)](https://app.netlify.com/sites/himama-timer/deploys)
+
+### screenshot
+![image](https://user-images.githubusercontent.com/49583931/118178888-2cd0a800-b3fa-11eb-86d2-00fcc2230148.png)
+
+
+### Features
+![image](https://user-images.githubusercontent.com/49583931/118181712-b170f580-b3fd-11eb-9d50-3b9c98b36cd0.png)
+- Start/stop time tracker
+- View the tracked hours
+- Stop(save) tracked time
+- Discard(stop & remove tracked time)
+- User selection
+- Ability to input the task name
+- View all time entries
+- Remove existing time entry
+
+### Database
+
 
 ## Available Scripts
 
