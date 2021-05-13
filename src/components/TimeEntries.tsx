@@ -1,28 +1,27 @@
-import { Row, Col, Typography, Card } from 'antd';
+import { Row, Col, Typography, Card, Button, Tag } from 'antd';
 import moment, { Moment } from 'moment';
 import { STUDENTS } from '../constants';
-import momentDurationFormatSetup from 'moment-duration-format';
+import { DeleteFilled } from '@ant-design/icons';
 const { Title } = Typography;
 
 interface ITimeEntriesProps {
   entries: Array<any>;
+  removeTime: (id: string) => void;
 }
 
 const formatTime = (t: string | Moment) => {
-  return moment(t).format('MM DDD hh:mm:ss');
+  return moment(t).format('MM/ddd hh:mm:ss');
 };
 
 export const formatDuration = (sec: number, timeFormat?: string) => {
-  const seconds = Math.abs(sec);
-  const duration = moment.duration(seconds, 'seconds') as any;
-  return duration.format('HH:mm:ss', { trim: false });
+  return moment('2000/01/01 00:00:00').add(sec, 'seconds').format('HH:mm:ss');
 };
 
 const calcDiff = (a: string | Moment | Date, b: string | Moment | Date) => {
   return Math.floor(Math.abs(moment(b).valueOf() - moment(a).valueOf()) / 1000);
 };
 
-export const TimeEntries: React.FC<ITimeEntriesProps> = ({ entries }) => {
+export const TimeEntries: React.FC<ITimeEntriesProps> = ({ entries, removeTime }) => {
   const getStudentName = (id: string) => {
     const st = STUDENTS.find((st) => st.id === id);
     if (st) return st.name;
@@ -46,10 +45,17 @@ export const TimeEntries: React.FC<ITimeEntriesProps> = ({ entries }) => {
               >
                 <Row style={{ width: '100%' }}>
                   <Col md={3}>{entry.taskName} </Col>
-                  <Col md={6}> {getStudentName(entry.studentId)}</Col>
+                  <Col md={3}>
+                    <Tag color="blue">{getStudentName(entry.studentId)} </Tag>
+                  </Col>
                   <Col md={6}> {formatTime(entry.startTime)}</Col>
                   <Col md={6}>{formatTime(entry.endTime)} </Col>
                   <Col md={3}>{formatDuration(calcDiff(entry.startTime, entry.endTime))} </Col>
+                  <Col md={3}>
+                    <Button type="primary" danger onClick={() => removeTime(entry.id)}>
+                      <DeleteFilled />
+                    </Button>
+                  </Col>
                 </Row>
               </Card>
             );

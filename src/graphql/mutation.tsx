@@ -5,3 +5,9 @@ export const CREATE_TIME_ENTRY = gql`
     createTimeEntry(request: $request)
   }
 `;
+
+export const REMOVE_TIME_ENTRY = gql`
+  mutation RemoveTimeEntry($entryId: String) {
+    removeTimeEntry(entryId: $entryId)
+  }
+`;

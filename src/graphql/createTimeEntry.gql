@@ -1,3 +1,0 @@
-mutation CreateTimeEntry($request: TimeEntryRequest) {
-  createTimeEntry(request: $request)
-}

@@ -13,7 +13,7 @@ export interface ITimeTracker {
 }
 
 export const TimeTracker: React.FC<ITimeTracker> = (props: ITimeTracker) => {
-  const { setTime, reset, stop, start } = props.timer;
+  const { reset, stop, start } = props.timer;
   const { saveTime } = props;
   const [startTime, setStartTime] = useState<Moment>(moment());
   const [endTime, setEndTime] = useState<Moment>(moment());
