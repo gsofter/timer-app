@@ -1,14 +1,11 @@
-import TimeTracker from '../components/TimeTracker';
 import { Row, Col, Typography } from 'antd';
 const { Title } = Typography;
 export const TimeEntries: React.FC = () => {
   return (
     <div>
-      <Title level={3}> TimeTracker </Title>
+      <Title level={3}> Entries </Title>
       <Row>
-        <Col span={24}>
-          <TimeTracker />
-        </Col>
+        <Col span={24}></Col>
       </Row>
     </div>
   );

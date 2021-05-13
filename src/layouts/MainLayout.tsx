@@ -1,10 +1,9 @@
 import { Layout, Menu } from 'antd';
-import { TimeEntries } from '../containers/TimeEntries';
 import { useFela } from 'react-fela';
 import CSS from 'csstype';
 const { Header, Content, Footer } = Layout;
 
-export const MainPage: React.FC = () => {
+export const MainLayout: React.FC = ({ children }) => {
   const { css } = useFela();
   return (
     <Layout className={css(styles.layout)}>
@@ -17,9 +16,7 @@ export const MainPage: React.FC = () => {
         </Menu>
       </Header>
       <Content style={{ padding: '0 50px' }}>
-        <div className="site-layout-content">
-          <TimeEntries />
-        </div>
+        <div className="site-layout-content">{children}</div>
       </Content>
       <Footer style={{ textAlign: 'center' }}>TimeTracker ©2021 Created by Steve</Footer>
     </Layout>

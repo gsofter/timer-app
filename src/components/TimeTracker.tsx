@@ -6,7 +6,6 @@ import CSS from 'csstype';
 import Timer from 'react-compound-timer';
 import moment, { Moment } from 'moment';
 const { Title } = Typography;
-
 export interface ITimeTracker {
   timer: any;
 }
@@ -53,14 +52,14 @@ export const TimeTracker: React.FC<ITimeTracker> = (props: ITimeTracker) => {
   return (
     <Row className={css(styles.timeTracker)}>
       <Col sm={12} className="flex-row flex-between">
-        <Input placeholder="What are you working on?" size="large" style={{ width: '50%', marginRight: '10px' }} />
-        <Select style={{ width: '50%' }}>
+        <Select style={{ width: '50%', marginRight: '10px' }}>
           {STUDENTS.map((st, index) => (
-            <Select.Option value="aaaa" key={st.id}>
+            <Select.Option value={st.id} key={st.id}>
               {st.name}
             </Select.Option>
           ))}
         </Select>
+        <Input placeholder="What are you working on?" size="large" style={{ width: '50%' }} />
       </Col>
       <Col sm={12} className={css(styles.flexEnd)}>
         <Title level={4} style={{ marginBottom: '0px', flex: '1', textAlign: 'center' }}>
