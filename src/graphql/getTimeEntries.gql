@@ -1,0 +1,9 @@
+query {
+  getTimeEntries {
+    id
+    startTime
+    endTime
+    studentId
+    taskName
+  }
+}
