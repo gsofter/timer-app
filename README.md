@@ -7,9 +7,15 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 [LIVE DEMO](https://himama-timer.netlify.app/)
 
-### screenshot
-![image](https://user-images.githubusercontent.com/49583931/118178888-2cd0a800-b3fa-11eb-86d2-00fcc2230148.png)
-
+### Technical Stacks
+- React
+- Typescript
+- Graphql
+- Apollo Graphql [@apollo/client](https://www.apollographql.com/docs/react/)
+- [React-compound-timer](https://www.npmjs.com/package/react-compound-timer) for interval
+- Use moment.js to manage date format and date string
+- Build project based [Ant Design](https://ant.design/).
+- Javascript helper [lodash]
 
 ### Features
 ![image](https://user-images.githubusercontent.com/49583931/118181712-b170f580-b3fd-11eb-9d50-3b9c98b36cd0.png)
